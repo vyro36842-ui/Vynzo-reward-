@@ -14,7 +14,7 @@ import {
   setDoc 
 } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
-// आपकी Firebase Configuration
+// Firebase Configuration
 const firebaseConfig = {
   apiKey: "AIzaSyBi38T8yNrfhdflClAWZA55DQHPlvg4iSc",
   authDomain: "vynzo-reward.firebaseapp.com",
@@ -27,8 +27,14 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
+
+// Google Provider Configuration
 export const googleProvider = new GoogleAuthProvider();
+googleProvider.setCustomParameters({
+  prompt: 'select_account'
+});
+
 export const db = getFirestore(app);
 
-// Export Auth & DB Helper Functions
+// Export Auth & Firestore Functions
 export { signInWithPopup, signOut, onAuthStateChanged, doc, getDoc, setDoc };
